@@ -21,7 +21,8 @@ import javax.servlet.http.HttpSession;
 public class FavoritePlacesEJB {
     public static final int MAXIMUM_VISITS = 5;
     public static final String YOU_CANNOT_ADD_MORE_THAN_FIVE_PLACES = "You cannot add more than five places in a single session ...";
-    private String address;
+
+    private String      address;
     private List<Place> savedPlaces;
     private String      errorMessage;
 
