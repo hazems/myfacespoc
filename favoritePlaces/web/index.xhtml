@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:m="http://code.google.com/p/gmaps4jsf/"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Welcome to the Favorite Place Application Demo</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <m:resources key="ABQIAAAAxrVS1QxlpJHXxQ2Vxg2bJBQdkFK-tWRbPPQS4ACM1pq_e-PltxQXeyH20wQuqDaQ_6EM5UeGGVpnIw"/>
+        <style type="text/css">
+		html, body { height: 100% }
+	</style>
+    </h:head>
+    <f:view contentType="text/html" beforePhase="#{favoritePlacesEJB.initializePerView}">
+    <h:body>
+        <h:form id="form1">
+            <h:outputText id="errorlbl" value="#{favoritePlacesEJB.errorMessage}" style="color: red; background: white;;"/>
+            <h:panelGrid columns="2">
+                <h:outputText value="Select five places you visit before: " />
+                <h:selectOneMenu id="countySelect" value="#{favoritePlacesEJB.address}">
+                     <f:selectItem  itemValue="Afghanistan"></f:selectItem>
+                     <f:selectItem  itemValue="Albania"></f:selectItem>
+                     <f:selectItem  itemValue="Algeria"></f:selectItem>
+                     <f:selectItem  itemValue="American Samoa"></f:selectItem>
+                     <f:selectItem  itemValue="Andorra"></f:selectItem>
+                     <f:selectItem  itemValue="Angola"></f:selectItem>
+                     <f:selectItem  itemValue="Anguilla"></f:selectItem>
+                     <f:selectItem  itemValue="Antigua &amp; Barbuda"></f:selectItem>
+                     <f:selectItem  itemValue="Argentina"></f:selectItem>
+                     <f:selectItem  itemValue="Armenia"></f:selectItem>
+                     <f:selectItem  itemValue="Aruba"></f:selectItem>
+                     <f:selectItem  itemValue="Australia"></f:selectItem>
+                     <f:selectItem  itemValue="Austria"></f:selectItem>
+                     <f:selectItem  itemValue="Azerbaijan"></f:selectItem>
+                     <f:selectItem  itemValue="Bahamas"></f:selectItem>
+                     <f:selectItem  itemValue="Bahrain"></f:selectItem>
+                     <f:selectItem  itemValue="Bangladesh"></f:selectItem>
+                     <f:selectItem  itemValue="Barbados"></f:selectItem>
+                     <f:selectItem  itemValue="Belarus"></f:selectItem>
+                     <f:selectItem  itemValue="Belgium"></f:selectItem>
+                     <f:selectItem  itemValue="Belize"></f:selectItem>
+                     <f:selectItem  itemValue="Benin"></f:selectItem>
+                     <f:selectItem  itemValue="Bermuda"></f:selectItem>
+                     <f:selectItem  itemValue="Bhutan"></f:selectItem>
+                     <f:selectItem  itemValue="Bolivia"></f:selectItem>
+                     <f:selectItem  itemValue="Bonaire"></f:selectItem>
+                     <f:selectItem  itemValue="Bosnia &amp; Herzegovina"></f:selectItem>
+                     <f:selectItem  itemValue="Botswana"></f:selectItem>
+                     <f:selectItem  itemValue="Brazil"></f:selectItem>
+                     <f:selectItem  itemValue="British Indian Ocean Ter"></f:selectItem>
+                     <f:selectItem  itemValue="Brunei"></f:selectItem>
+                     <f:selectItem  itemValue="Bulgaria"></f:selectItem>
+                     <f:selectItem  itemValue="Burkina Faso"></f:selectItem>
+                     <f:selectItem  itemValue="Burundi"></f:selectItem>
+                     <f:selectItem  itemValue="Cambodia"></f:selectItem>
+                     <f:selectItem  itemValue="Cameroon"></f:selectItem>
+                     <f:selectItem  itemValue="Canada"></f:selectItem>
+                     <f:selectItem  itemValue="Canary Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Cape Verde"></f:selectItem>
+                     <f:selectItem  itemValue="Cayman Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Central African Republic"></f:selectItem>
+                     <f:selectItem  itemValue="Chad"></f:selectItem>
+                     <f:selectItem  itemValue="Channel Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Chile"></f:selectItem>
+                     <f:selectItem  itemValue="China"></f:selectItem>
+                     <f:selectItem  itemValue="Christmas Island"></f:selectItem>
+                     <f:selectItem  itemValue="Cocos Island"></f:selectItem>
+                     <f:selectItem  itemValue="Colombia"></f:selectItem>
+                     <f:selectItem  itemValue="Comoros"></f:selectItem>
+                     <f:selectItem  itemValue="Congo"></f:selectItem>
+                     <f:selectItem  itemValue="Cook Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Costa Rica"></f:selectItem>
+                     <f:selectItem  itemValue="Cote D'Ivoire"></f:selectItem>
+                     <f:selectItem  itemValue="Croatia"></f:selectItem>
+                     <f:selectItem  itemValue="Cuba"></f:selectItem>
+                     <f:selectItem  itemValue="Curacao"></f:selectItem>
+                     <f:selectItem  itemValue="Cyprus"></f:selectItem>
+                     <f:selectItem  itemValue="Czech Republic"></f:selectItem>
+                     <f:selectItem  itemValue="Denmark"></f:selectItem>
+                     <f:selectItem  itemValue="Djibouti"></f:selectItem>
+                     <f:selectItem  itemValue="Dominica"></f:selectItem>
+                     <f:selectItem  itemValue="Dominican Republic"></f:selectItem>
+                     <f:selectItem  itemValue="East Timor"></f:selectItem>
+                     <f:selectItem  itemValue="Ecuador"></f:selectItem>
+                     <f:selectItem  itemValue="Egypt"></f:selectItem>
+                     <f:selectItem  itemValue="El Salvador"></f:selectItem>
+                     <f:selectItem  itemValue="Equatorial Guinea"></f:selectItem>
+                     <f:selectItem  itemValue="Eritrea"></f:selectItem>
+                     <f:selectItem  itemValue="Estonia"></f:selectItem>
+                     <f:selectItem  itemValue="Ethiopia"></f:selectItem>
+                     <f:selectItem  itemValue="Falkland Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Faroe Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Fiji"></f:selectItem>
+                     <f:selectItem  itemValue="Finland"></f:selectItem>
+                     <f:selectItem  itemValue="France"></f:selectItem>
+                     <f:selectItem  itemValue="French Guiana"></f:selectItem>
+                     <f:selectItem  itemValue="French Polynesia"></f:selectItem>
+                     <f:selectItem  itemValue="French Southern Ter"></f:selectItem>
+                     <f:selectItem  itemValue="Gabon"></f:selectItem>
+                     <f:selectItem  itemValue="Gambia"></f:selectItem>
+                     <f:selectItem  itemValue="Georgia"></f:selectItem>
+                     <f:selectItem  itemValue="Germany"></f:selectItem>
+                     <f:selectItem  itemValue="Ghana"></f:selectItem>
+                     <f:selectItem  itemValue="Gibraltar"></f:selectItem>
+                     <f:selectItem  itemValue="Great Britain"></f:selectItem>
+                     <f:selectItem  itemValue="Greece"></f:selectItem>
+                     <f:selectItem  itemValue="Greenland"></f:selectItem>
+                     <f:selectItem  itemValue="Grenada"></f:selectItem>
+                     <f:selectItem  itemValue="Guadeloupe"></f:selectItem>
+                     <f:selectItem  itemValue="Guam"></f:selectItem>
+                     <f:selectItem  itemValue="Guatemala"></f:selectItem>
+                     <f:selectItem  itemValue="Guinea"></f:selectItem>
+                     <f:selectItem  itemValue="Guyana"></f:selectItem>
+                     <f:selectItem  itemValue="Haiti"></f:selectItem>
+                     <f:selectItem  itemValue="Hawaii"></f:selectItem>
+                     <f:selectItem  itemValue="Honduras"></f:selectItem>
+                     <f:selectItem  itemValue="Hong Kong"></f:selectItem>
+                     <f:selectItem  itemValue="Hungary"></f:selectItem>
+                     <f:selectItem  itemValue="Iceland"></f:selectItem>
+                     <f:selectItem  itemValue="India"></f:selectItem>
+                     <f:selectItem  itemValue="Indonesia"></f:selectItem>
+                     <f:selectItem  itemValue="Iran"></f:selectItem>
+                     <f:selectItem  itemValue="Iraq"></f:selectItem>
+                     <f:selectItem  itemValue="Ireland"></f:selectItem>
+                     <f:selectItem  itemValue="Isle of Man"></f:selectItem>
+                     <f:selectItem  itemValue="Israel"></f:selectItem>
+                     <f:selectItem  itemValue="Italy"></f:selectItem>
+                     <f:selectItem  itemValue="Jamaica"></f:selectItem>
+                     <f:selectItem  itemValue="Japan"></f:selectItem>
+                     <f:selectItem  itemValue="Jordan"></f:selectItem>
+                     <f:selectItem  itemValue="Kazakhstan"></f:selectItem>
+                     <f:selectItem  itemValue="Kenya"></f:selectItem>
+                     <f:selectItem  itemValue="Kiribati"></f:selectItem>
+                     <f:selectItem  itemValue="Korea North"></f:selectItem>
+                     <f:selectItem  itemValue="Korea South"></f:selectItem>
+                     <f:selectItem  itemValue="Kuwait"></f:selectItem>
+                     <f:selectItem  itemValue="Kyrgyzstan"></f:selectItem>
+                     <f:selectItem  itemValue="Laos"></f:selectItem>
+                     <f:selectItem  itemValue="Latvia"></f:selectItem>
+                     <f:selectItem  itemValue="Lebanon"></f:selectItem>
+                     <f:selectItem  itemValue="Lesotho"></f:selectItem>
+                     <f:selectItem  itemValue="Liberia"></f:selectItem>
+                     <f:selectItem  itemValue="Libya"></f:selectItem>
+                     <f:selectItem  itemValue="Liechtenstein"></f:selectItem>
+                     <f:selectItem  itemValue="Lithuania"></f:selectItem>
+                     <f:selectItem  itemValue="Luxembourg"></f:selectItem>
+                     <f:selectItem  itemValue="Macau"></f:selectItem>
+                     <f:selectItem  itemValue="Macedonia"></f:selectItem>
+                     <f:selectItem  itemValue="Madagascar"></f:selectItem>
+                     <f:selectItem  itemValue="Malaysia"></f:selectItem>
+                     <f:selectItem  itemValue="Malawi"></f:selectItem>
+                     <f:selectItem  itemValue="Maldives"></f:selectItem>
+                     <f:selectItem  itemValue="Mali"></f:selectItem>
+                     <f:selectItem  itemValue="Malta"></f:selectItem>
+                     <f:selectItem  itemValue="Marshall Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Martinique"></f:selectItem>
+                     <f:selectItem  itemValue="Mauritania"></f:selectItem>
+                     <f:selectItem  itemValue="Mauritius"></f:selectItem>
+                     <f:selectItem  itemValue="Mayotte"></f:selectItem>
+                     <f:selectItem  itemValue="Mexico"></f:selectItem>
+                     <f:selectItem  itemValue="Midway Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Moldova"></f:selectItem>
+                     <f:selectItem  itemValue="Monaco"></f:selectItem>
+                     <f:selectItem  itemValue="Mongolia"></f:selectItem>
+                     <f:selectItem  itemValue="Montserrat"></f:selectItem>
+                     <f:selectItem  itemValue="Morocco"></f:selectItem>
+                     <f:selectItem  itemValue="Mozambique"></f:selectItem>
+                     <f:selectItem  itemValue="Myanmar"></f:selectItem>
+                     <f:selectItem  itemValue="Nambia"></f:selectItem>
+                     <f:selectItem  itemValue="Nauru"></f:selectItem>
+                     <f:selectItem  itemValue="Nepal"></f:selectItem>
+                     <f:selectItem  itemValue="Netherland Antilles"></f:selectItem>
+                     <f:selectItem  itemValue="Netherlands (Holland, Europe)"></f:selectItem>
+                     <f:selectItem  itemValue="Nevis"></f:selectItem>
+                     <f:selectItem  itemValue="New Caledonia"></f:selectItem>
+                     <f:selectItem  itemValue="New Zealand"></f:selectItem>
+                     <f:selectItem  itemValue="Nicaragua"></f:selectItem>
+                     <f:selectItem  itemValue="Niger"></f:selectItem>
+                     <f:selectItem  itemValue="Nigeria"></f:selectItem>
+                     <f:selectItem  itemValue="Niue"></f:selectItem>
+                     <f:selectItem  itemValue="Norfolk Island"></f:selectItem>
+                     <f:selectItem  itemValue="Norway"></f:selectItem>
+                     <f:selectItem  itemValue="Oman"></f:selectItem>
+                     <f:selectItem  itemValue="Pakistan"></f:selectItem>
+                     <f:selectItem  itemValue="Palau Island"></f:selectItem>
+                     <f:selectItem  itemValue="Palestine"></f:selectItem>
+                     <f:selectItem  itemValue="Panama"></f:selectItem>
+                     <f:selectItem  itemValue="Papua New Guinea"></f:selectItem>
+                     <f:selectItem  itemValue="Paraguay"></f:selectItem>
+                     <f:selectItem  itemValue="Peru"></f:selectItem>
+                     <f:selectItem  itemValue="Philippines"></f:selectItem>
+                     <f:selectItem  itemValue="Pitcairn Island"></f:selectItem>
+                     <f:selectItem  itemValue="Poland"></f:selectItem>
+                     <f:selectItem  itemValue="Portugal"></f:selectItem>
+                     <f:selectItem  itemValue="Puerto Rico"></f:selectItem>
+                     <f:selectItem  itemValue="Qatar"></f:selectItem>
+                     <f:selectItem  itemValue="Republic of Montenegro"></f:selectItem>
+                     <f:selectItem  itemValue="Republic of Serbia"></f:selectItem>
+                     <f:selectItem  itemValue="Reunion"></f:selectItem>
+                     <f:selectItem  itemValue="Romania"></f:selectItem>
+                     <f:selectItem  itemValue="Russia"></f:selectItem>
+                     <f:selectItem  itemValue="Rwanda"></f:selectItem>
+                     <f:selectItem  itemValue="St Barthelemy"></f:selectItem>
+                     <f:selectItem  itemValue="St Eustatius"></f:selectItem>
+                     <f:selectItem  itemValue="St Helena"></f:selectItem>
+                     <f:selectItem  itemValue="St Kitts-Nevis"></f:selectItem>
+                     <f:selectItem  itemValue="St Lucia"></f:selectItem>
+                     <f:selectItem  itemValue="St Maarten"></f:selectItem>
+                     <f:selectItem  itemValue="St Pierre &amp; Miquelon"></f:selectItem>
+                     <f:selectItem  itemValue="St Vincent &amp; Grenadines"></f:selectItem>
+                     <f:selectItem  itemValue="Saipan"></f:selectItem>
+                     <f:selectItem  itemValue="Samoa"></f:selectItem>
+                     <f:selectItem  itemValue="Samoa American"></f:selectItem>
+                     <f:selectItem  itemValue="San Marino"></f:selectItem>
+                     <f:selectItem  itemValue="Sao Tome &amp; Principe"></f:selectItem>
+                     <f:selectItem  itemValue="Saudi Arabia"></f:selectItem>
+                     <f:selectItem  itemValue="Senegal"></f:selectItem>
+                     <f:selectItem  itemValue="Seychelles"></f:selectItem>
+                     <f:selectItem  itemValue="Sierra Leone"></f:selectItem>
+                     <f:selectItem  itemValue="Singapore"></f:selectItem>
+                     <f:selectItem  itemValue="Slovakia"></f:selectItem>
+                     <f:selectItem  itemValue="Slovenia"></f:selectItem>
+                     <f:selectItem  itemValue="Solomon Islands"></f:selectItem>
+                     <f:selectItem  itemValue="Somalia"></f:selectItem>
+                     <f:selectItem  itemValue="South Africa"></f:selectItem>
+                     <f:selectItem  itemValue="Spain"></f:selectItem>
+                     <f:selectItem  itemValue="Sri Lanka"></f:selectItem>
+                     <f:selectItem  itemValue="Sudan"></f:selectItem>
+                     <f:selectItem  itemValue="Suriname"></f:selectItem>
+                     <f:selectItem  itemValue="Swaziland"></f:selectItem>
+                     <f:selectItem  itemValue="Sweden"></f:selectItem>
+                     <f:selectItem  itemValue="Switzerland"></f:selectItem>
+                     <f:selectItem  itemValue="Syria"></f:selectItem>
+                     <f:selectItem  itemValue="Tahiti"></f:selectItem>
+                     <f:selectItem  itemValue="Taiwan"></f:selectItem>
+                     <f:selectItem  itemValue="Tajikistan"></f:selectItem>
+                     <f:selectItem  itemValue="Tanzania"></f:selectItem>
+                     <f:selectItem  itemValue="Thailand"></f:selectItem>
+                     <f:selectItem  itemValue="Togo"></f:selectItem>
+                     <f:selectItem  itemValue="Tokelau"></f:selectItem>
+                     <f:selectItem  itemValue="Tonga"></f:selectItem>
+                     <f:selectItem  itemValue="Trinidad &amp; Tobago"></f:selectItem>
+                     <f:selectItem  itemValue="Tunisia"></f:selectItem>
+                     <f:selectItem  itemValue="Turkey"></f:selectItem>
+                     <f:selectItem  itemValue="Turkmenistan"></f:selectItem>
+                     <f:selectItem  itemValue="Turks &amp; Caicos Is"></f:selectItem>
+                     <f:selectItem  itemValue="Tuvalu"></f:selectItem>
+                     <f:selectItem  itemValue="Uganda"></f:selectItem>
+                     <f:selectItem  itemValue="Ukraine"></f:selectItem>
+                     <f:selectItem  itemValue="United Arab Emirates"></f:selectItem>
+                     <f:selectItem  itemValue="United Kingdom"></f:selectItem>
+                     <f:selectItem  itemValue="United States of America"></f:selectItem>
+                     <f:selectItem  itemValue="Uruguay"></f:selectItem>
+                     <f:selectItem  itemValue="Uzbekistan"></f:selectItem>
+                     <f:selectItem  itemValue="Vanuatu"></f:selectItem>
+                     <f:selectItem  itemValue="Vatican City State"></f:selectItem>
+                     <f:selectItem  itemValue="Venezuela"></f:selectItem>
+                     <f:selectItem  itemValue="Vietnam"></f:selectItem>
+                     <f:selectItem  itemValue="Virgin Islands (Brit)"></f:selectItem>
+                     <f:selectItem  itemValue="Virgin Islands (USA)"></f:selectItem>
+                     <f:selectItem  itemValue="Wake Island"></f:selectItem>
+                     <f:selectItem  itemValue="Wallis &amp; Futana Is"></f:selectItem>
+                     <f:selectItem  itemValue="Yemen"></f:selectItem>
+                     <f:selectItem  itemValue="Zaire"></f:selectItem>
+                     <f:selectItem  itemValue="Zambia"></f:selectItem>
+                     <f:selectItem   itemValue="Zimbabwe"></f:selectItem>
+                </h:selectOneMenu>
+            </h:panelGrid>
+
+            <h:commandButton value="Add place" action="#{favoritePlacesEJB.addFavoritePlace}">
+                <f:ajax execute=":form1:countySelect" render=":form1:mapGroup :form1:errorlbl">
+                </f:ajax>
+            </h:commandButton>
+
+            <br/>
+
+            <h:panelGroup id="mapGroup">
+                <m:map id="map"
+                       width="800px" height="600px"
+                       zoom="2"
+                       renderOnWindowLoad="false"
+                       rendered="#{favoritePlacesEJB.savedPlaces ne null}">
+                    <ui:repeat value="#{favoritePlacesEJB.savedPlaces}" var="place">
+                        <m:marker address="#{place.placeAddress}">
+                            <m:htmlInformationWindow htmlText="#{place.placeAddress}"/>
+                        </m:marker>
+                    </ui:repeat>
+
+                </m:map>
+            </h:panelGroup>
+        </h:form>
+    </h:body>
+    </f:view>
+</html>
