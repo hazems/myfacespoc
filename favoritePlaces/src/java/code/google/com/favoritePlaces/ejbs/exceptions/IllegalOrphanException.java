@@ -1,4 +1,4 @@
-package code.google.com.favoritePlaces.persistence.exceptions;
+package code.google.com.favoritePlaces.ejbs.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

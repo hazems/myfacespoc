@@ -1,4 +1,4 @@
-package code.google.com.favoritePlaces.persistence.exceptions;
+package code.google.com.favoritePlaces.ejbs.exceptions;
 
 public class RollbackFailureException extends Exception {
     public RollbackFailureException(String message, Throwable cause) {

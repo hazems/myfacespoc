@@ -1,4 +1,4 @@
-package code.google.com.favoritePlaces.persistence.exceptions;
+package code.google.com.favoritePlaces.ejbs.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {

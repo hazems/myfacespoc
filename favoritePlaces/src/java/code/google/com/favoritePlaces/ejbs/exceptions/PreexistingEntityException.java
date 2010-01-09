@@ -1,4 +1,4 @@
-package code.google.com.favoritePlaces.persistence.exceptions;
+package code.google.com.favoritePlaces.ejbs.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {
