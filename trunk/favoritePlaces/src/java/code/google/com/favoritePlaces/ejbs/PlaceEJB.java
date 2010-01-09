@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package code.google.com.favoritePlaces.persistence;
+package code.google.com.favoritePlaces.ejbs;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author hazems
  */
-public interface PlaceDAO {
+public interface PlaceEJB {
     public void addFavoritePlace(Place place);
     public List<Place> getFavoritePlaces(String userID);
 }

@@ -13,13 +13,13 @@
 		html, body { height: 100% }
 	</style>
     </h:head>
-    <f:view contentType="text/html" beforePhase="#{favoritePlacesEJB.initializePerView}">
+    <f:view contentType="text/html" beforePhase="#{favoritePlaces.loadUserSettings}">
     <h:body>
         <h:form id="form1">
-            <h:outputText id="errorlbl" value="#{favoritePlacesEJB.errorMessage}" style="color: red; background: white;;"/>
+            <h:outputText id="errorlbl" value="#{favoritePlaces.errorMessage}" style="color: red; background: white;;"/>
             <h:panelGrid columns="2">
                 <h:outputText value="Select five places you visit before: " />
-                <h:selectOneMenu id="countySelect" value="#{favoritePlacesEJB.address}">
+                <h:selectOneMenu id="countySelect" value="#{favoritePlaces.address}">
                      <f:selectItem  itemValue="Afghanistan"></f:selectItem>
                      <f:selectItem  itemValue="Albania"></f:selectItem>
                      <f:selectItem  itemValue="Algeria"></f:selectItem>
@@ -269,7 +269,7 @@
                 </h:selectOneMenu>
             </h:panelGrid>
 
-            <h:commandButton value="Add place" action="#{favoritePlacesEJB.addFavoritePlace}">
+            <h:commandButton value="Add place" action="#{favoritePlaces.addFavoritePlace}">
                 <f:ajax execute=":form1:countySelect" render=":form1:mapGroup :form1:errorlbl">
                 </f:ajax>
             </h:commandButton>
@@ -281,8 +281,8 @@
                        width="800px" height="600px"
                        zoom="2"
                        renderOnWindowLoad="false"
-                       rendered="#{favoritePlacesEJB.savedPlaces ne null}">
-                    <ui:repeat value="#{favoritePlacesEJB.savedPlaces}" var="place">
+                       rendered="#{favoritePlaces.savedPlaces ne null}">
+                    <ui:repeat value="#{favoritePlaces.savedPlaces}" var="place">
                         <m:marker address="#{place.placeAddress}">
                             <m:htmlInformationWindow htmlText="#{place.placeAddress}"/>
                         </m:marker>

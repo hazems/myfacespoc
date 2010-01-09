@@ -2,32 +2,30 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package code.google.com.favoritePlaces.beans;
 
-package code.google.com.favoritePlaces.business;
-
-import code.google.com.favoritePlaces.persistence.Place;
-import code.google.com.favoritePlaces.persistence.PlaceDAO;
+import code.google.com.favoritePlaces.ejbs.Place;
+import code.google.com.favoritePlaces.ejbs.PlaceEJB;
 import java.util.List;
-import javax.ejb.Stateless;
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-@Stateless
 @Named
-public class FavoritePlacesEJB {
+@RequestScoped
+public class FavoritePlaces {
+
     public static final int MAXIMUM_VISITS = 5;
     public static final String YOU_CANNOT_ADD_MORE_THAN_FIVE_PLACES = "You cannot add more than five places in a single session ...";
-
-    private String      address;
+    private String address;
     private List<Place> savedPlaces;
-    private String      errorMessage;
-
-    @Inject
-    PlaceDAO placeDAO;
+    private String errorMessage;
+   
+    @EJB PlaceEJB placeEJB;
 
     /**
      * @return the address
@@ -57,7 +55,7 @@ public class FavoritePlacesEJB {
         this.savedPlaces = savedPlaces;
     }
 
-   /**
+    /**
      * @return the errorMessage
      */
     public String getErrorMessage() {
@@ -71,27 +69,18 @@ public class FavoritePlacesEJB {
         this.errorMessage = errorMessage;
     }
 
-    public void initializePerView(PhaseEvent event)  {
-        if (event.getPhaseId() == PhaseId.RENDER_RESPONSE) {
+    public void loadUserSettings(PhaseEvent phaseEvent) {
+        if (phaseEvent.getPhaseId() == PhaseId.RENDER_RESPONSE) {
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-
-            savedPlaces = placeDAO.getFavoritePlaces(session.getId());
-
-            if (savedPlaces.size() >= MAXIMUM_VISITS) {
-                errorMessage = YOU_CANNOT_ADD_MORE_THAN_FIVE_PLACES;
-            } else {
-                errorMessage = "";
-            }
-            
-            System.err.println("Init per view is called ...");
+            savedPlaces = placeEJB.getFavoritePlaces(session.getId());
         }
     }
-    
+
     public String addFavoritePlace() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        Place       place   = new Place();
+        Place place = new Place();
 
-        savedPlaces = placeDAO.getFavoritePlaces(session.getId());
+        savedPlaces = placeEJB.getFavoritePlaces(session.getId());
 
         if (savedPlaces.size() >= MAXIMUM_VISITS) {
             errorMessage = YOU_CANNOT_ADD_MORE_THAN_FIVE_PLACES;
@@ -101,8 +90,8 @@ public class FavoritePlacesEJB {
         place.setPlaceAddress(getAddress());
         place.setUserId(session.getId());
 
-        placeDAO.addFavoritePlace(place);
-        savedPlaces = placeDAO.getFavoritePlaces(session.getId());
+        placeEJB.addFavoritePlace(place);
+        savedPlaces = placeEJB.getFavoritePlaces(session.getId());
 
         errorMessage = "";
         return null;
