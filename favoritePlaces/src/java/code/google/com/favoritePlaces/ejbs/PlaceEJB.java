@@ -13,5 +13,6 @@ import java.util.List;
  */
 public interface PlaceEJB {
     public void addFavoritePlace(Place place);
+    public void deleteFavoritePlace(Place place);
     public List<Place> getFavoritePlaces(String userID);
 }
